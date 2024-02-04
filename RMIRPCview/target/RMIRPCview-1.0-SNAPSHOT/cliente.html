@@ -1,0 +1,85 @@
+
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid d-flex align-items-end flex-column">
+    <form class="d-flex" role="search">
+      <a class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#">
+        Agregar
+      </a>
+    </form>
+  </div>
+</nav>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col">
+      <div class="row align-items-center">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Edad</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Total</th>
+              <th scope="col">Recalcular</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="per in personas">
+              <th scope="row">{{per.nombre}}</th>
+              <td>{{per.apellidos}}</td>
+              <td>{{per.edad}}</td>
+              <td>{{per.correo}}</td>
+              <td>{{per.total}}</td>
+              <td>
+                <button type="button" class="btn btn-success" ng-click="recalcularTotal(per.idcliente)">Recalcular total</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-success" ng-click="change_link(per.idcliente)">Agregar Compra</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Persona</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form name="form" ng-submit="guardar(form)">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input class="form-control" id="nombre" name="nombre" ng-model="nombre" type="text" maxlength="10" placeholder="Ingrese el nombre" aria-label="default input example">
+          </div>
+          <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido</label>
+            <input class="form-control" id="apellido" name="apellido" ng-model="apellido" type="text" placeholder="Ingrese los apellidos" aria-label="default input example">
+          </div>
+          <div class="mb-3">
+            <label for="correo" class="form-label">Correo</label>
+            <input class="form-control" id="correo" name="correo" ng-model="correo" type="email" placeholder="Ingrese el correo" aria-label="default input example">
+          </div>
+          <div class="mb-3">
+            <label for="edad" class="form-label">Edad</label>
+            <input type="number" class="form-control" name="edad" id="edad" ng-model="edad" aria-describedby="emailHelp">
+          </div>
+          <button class="btn btn-primary" data-bs-dismiss="modal" type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
